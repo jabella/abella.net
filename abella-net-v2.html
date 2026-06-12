@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Abella — Schedule of Services</title>
+<meta name="description" content="Slow cyclist, amateur father, obsessive hobbyist. Security executive by day; builder of robots, bicycles, and costumes the rest of the time.">
+<link rel="canonical" href="https://www.abella.net/">
+<meta name="theme-color" content="#1F3553">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abella.net/">
+<meta property="og:site_name" content="John Abella">
+<meta property="og:title" content="John Abella — Schedule of Services">
+<meta property="og:description" content="Slow cyclist, amateur father, obsessive hobbyist. Security executive by day; builder of robots, bicycles, and costumes the rest of the time.">
+<meta property="og:image" content="https://www.abella.net/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="John Abella — Schedule of Services">
+<meta name="twitter:description" content="Slow cyclist, amateur father, obsessive hobbyist.">
+<meta name="twitter:image" content="https://www.abella.net/og-image.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F4EC;
+    --ink:#1C2420;
+    --green:#1F3553;
+    --orange:#D5482F;
+    --blue:#2B5B8A;
+    --red:#B0392C;
+    --slate:#54584F;
+    --rule:#C9C4B2;
+    --row:#EFEDDE;
+    --paper-bright:#FBFAF4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Barlow',sans-serif;
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--orange);color:var(--paper-bright);}
+
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    padding:20px 0 14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .masthead .mono{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .masthead nav{display:flex;gap:18px;}
+  .masthead nav a{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border-bottom:2px solid transparent;
+    padding-bottom:1px;
+  }
+  .masthead nav a:hover,.masthead nav a:focus-visible{border-bottom-color:var(--orange);}
+
+  /* ---------- Rollsign hero ---------- */
+  .rollsign{
+    background:var(--green);
+    color:var(--paper-bright);
+    border-top:4px solid var(--ink);
+    border-bottom:4px solid var(--ink);
+  }
+  .rollsign-inner{
+    padding:54px 0 50px;
+    position:relative;
+  }
+  .rollsign h1{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    font-size:clamp(64px,12vw,124px);
+    line-height:.92;
+    letter-spacing:.015em;
+    text-transform:uppercase;
+  }
+  .rollsign h1 .dest{display:block;}
+  .rollsign h1 .dest:nth-child(2){color:var(--orange);}
+  .rollsign .via{
+    margin-top:18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#C7D3E2;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .rollsign h1 .dest{
+      animation:roll .7s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .rollsign h1 .dest:nth-child(2){animation-delay:.12s;}
+    .rollsign .via{animation:roll .7s .26s cubic-bezier(.2,.8,.2,1) both;}
+    @keyframes roll{
+      from{opacity:0;transform:translateY(.45em);}
+      to{opacity:1;transform:translateY(0);}
+    }
+  }
+
+  /* ---------- Intro ---------- */
+  .intro{padding:44px 0 10px;}
+  .intro .tagline{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:600;
+    font-size:clamp(26px,4.5vw,38px);
+    line-height:1.1;
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    max-width:18em;
+  }
+  .intro .tagline em{font-style:normal;color:var(--orange);}
+  .intro p{margin-top:18px;max-width:620px;font-size:18px;}
+
+  /* ---------- Section bars ---------- */
+  section{padding:38px 0 8px;}
+  .bar{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--ink);
+    color:var(--paper-bright);
+    padding:9px 14px;
+    margin-bottom:22px;
+  }
+  .bar h2{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    font-size:21px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .bar .note{
+    margin-left:auto;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#B4BfCB;
+    text-align:right;
+  }
+
+  /* ---------- Weekday service ---------- */
+  .weekday{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;margin-bottom:30px;}
+  .weekday p + p{margin-top:14px;}
+  .panel{
+    border:2px solid var(--ink);
+    background:var(--paper-bright);
+    padding:18px 20px;
+    align-self:start;
+  }
+  .panel h3{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:8px;
+    margin-bottom:12px;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.05em;
+    border:1.5px solid var(--ink);
+    border-radius:999px;
+    padding:3px 11px;
+    background:var(--paper);
+  }
+  .panel .fares{margin-top:16px;font-size:14.5px;color:var(--slate);}
+  .cta{
+    display:inline-block;
+    margin-top:22px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    text-decoration:none;
+    background:var(--green);
+    color:var(--paper-bright);
+    padding:10px 20px 9px;
+    border:2px solid var(--ink);
+    box-shadow:3px 3px 0 var(--ink);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .cta:hover,.cta:focus-visible{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink);}
+  .cta.alt{background:var(--orange);}
+
+  /* ---------- Timetable ---------- */
+  .line{margin-bottom:30px;border:2px solid var(--ink);background:var(--paper-bright);}
+  .line-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 16px;
+    border-bottom:2px solid var(--ink);
+  }
+  .bullet{
+    flex:0 0 auto;
+    width:44px;height:44px;
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:22px;
+    color:var(--paper-bright);
+    border:2px solid var(--ink);
+  }
+  .line-head .name{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:24px;
+    letter-spacing:.06em;text-transform:uppercase;
+    line-height:1;
+  }
+  .line-head .sub{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;letter-spacing:.06em;
+    color:var(--slate);margin-top:4px;
+  }
+  .line ul{list-style:none;}
+  .line li{border-top:1px solid var(--rule);}
+  .line li:first-child{border-top:none;}
+  .line li:nth-child(even){background:var(--row);}
+  .line a.stop{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    padding:11px 16px;
+    text-decoration:none;
+  }
+  .line a.stop:hover,.line a.stop:focus-visible{background:var(--ink);color:var(--paper-bright);}
+  .stop .dest{font-weight:500;font-size:16.5px;}
+  .stop .plat{
+    margin-left:auto;
+    flex:0 0 auto;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .line a.stop:hover .plat,.line a.stop:focus-visible .plat{color:#B4BfCB;}
+  .l-build .bullet{background:var(--orange);}
+  .l-arena .bullet{background:var(--red);}
+  .l-encore .bullet{background:#6E4B86;}
+  .l-ride .bullet{background:#2E6B4F;}
+  .l-field .bullet{background:var(--blue);}
+
+  /* ---------- Telemetry ---------- */
+  .stations{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px;}
+  .station{
+    border:2px solid var(--ink);
+    background:var(--paper-bright);
+    padding:16px 18px;
+    text-decoration:none;
+    display:block;
+    transition:transform .12s ease;
+  }
+  .station:hover,.station:focus-visible{transform:translateY(-2px);background:var(--ink);color:var(--paper-bright);}
+  .station .id{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--orange);
+  }
+  .station h3{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:21px;
+    letter-spacing:.05em;text-transform:uppercase;
+    margin:6px 0 4px;
+  }
+  .station p{font-size:14.5px;color:var(--slate);}
+  .station:hover p,.station:focus-visible p{color:#B4BfCB;}
+
+  .advisory{
+    border:2px solid var(--ink);
+    background:var(--paper-bright);
+    margin-bottom:18px;
+  }
+  .advisory .stripe{
+    height:14px;
+    border-bottom:2px solid var(--ink);
+    background:repeating-linear-gradient(
+      -45deg,
+      var(--orange) 0 14px,
+      var(--ink) 14px 28px
+    );
+  }
+  .advisory .body{
+    padding:12px 16px;
+    display:flex;
+    gap:12px;
+    align-items:baseline;
+    flex-wrap:wrap;
+  }
+  .advisory .label{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    flex:0 0 auto;
+  }
+  .advisory .msg{font-size:15.5px;color:var(--slate);}
+  .station.closed{
+    position:relative;
+    cursor:default;
+    overflow:hidden;
+  }
+  .station.closed:hover,.station.closed:focus-visible{
+    transform:none;
+    background:var(--paper-bright);
+    color:var(--ink);
+  }
+  .station.closed:hover p{color:var(--slate);}
+  .station.closed .id,.station.closed h3,.station.closed p{
+    opacity:.38;
+    filter:grayscale(1);
+  }
+  .station.closed::after{
+    content:"Temporarily closed";
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%) rotate(-7deg);
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    border:2.5px solid var(--red);
+    padding:4px 12px 3px;
+    background:var(--paper-bright);
+    white-space:nowrap;
+  }
+
+  /* ---------- Connections / footer ---------- */
+  .connections{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:8px;}
+  footer{
+    margin-top:54px;
+    border-top:4px solid var(--ink);
+    background:var(--green);
+    color:#C7D3E2;
+  }
+  footer .wrap{
+    padding:22px 24px 26px;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  }
+  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px;}
+
+  @media (max-width:680px){
+    .weekday{grid-template-columns:1fr;}
+    .stations{grid-template-columns:1fr;}
+    .bar .note{display:none;}
+    .stop .plat{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap masthead">
+  <span class="mono">Abella.net · Schedule of services · Effective June 2026</span>
+  <nav aria-label="Sections">
+    <a href="#weekday">Weekday</a>
+    <a href="#weekend">Weekend</a>
+    <a href="#telemetry">Telemetry</a>
+    <a href="#connections">Connections</a>
+  </nav>
+</header>
+
+<div class="rollsign">
+  <div class="wrap rollsign-inner">
+    <h1><span class="dest">John</span><span class="dest">Abella</span></h1>
+    <p class="via">Via Philadelphia · All stops · No transfers required</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap intro">
+    <p class="tagline">Slow cyclist, amateur father, <em>obsessive hobbyist.</em></p>
+    <p>If I'm not riding bikes, I'm driving my kid to sports or building something. I have a bunch of 3D printers, I used to write for Make Magazine, and I ran the 3D Printer Village at World Maker Faire. I might also be your next CISO.</p>
+  </div>
+
+  <section class="wrap" id="weekday">
+    <div class="bar"><h2>Weekday Service</h2><span class="note">Mon–Fri · The day job</span></div>
+    <div class="weekday">
+      <div>
+        <p>I'm a Chief Information Security Officer with 25+ years across financial services, healthcare, and payments — currently leading security for a wealth management and investment banking firm. I've run global security operations at one of the world's largest asset managers and served as CISO for a major health insurer.</p>
+        <p>I speak fluent regulator (FINRA, SEC, HIPAA), fluent boardroom, and fluent engineer — often in the same meeting. I'm interested in advisory work, board service, and speaking engagements on security leadership.</p>
+        <a class="cta" href="https://www.linkedin.com/in/johnabella/">Connect on LinkedIn</a>
+      </div>
+      <aside class="panel">
+        <h3>Fare &amp; Credential Information</h3>
+        <div class="chips">
+          <span class="chip">CISSP</span>
+          <span class="chip">CISM</span>
+          <span class="chip">GCIH</span>
+          <span class="chip">FINRA Series 7</span>
+          <span class="chip">FINRA Series 99</span>
+          <span class="chip">M.S. Cybersecurity &amp; Privacy Law</span>
+        </div>
+        <p class="fares">Exact change appreciated. Auditors ride free.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="wrap" id="weekend">
+    <div class="bar"><h2>Weekend &amp; Holiday Service</h2><span class="note">Projects · Adventures · Frequent service</span></div>
+
+    <div class="line l-build">
+      <div class="line-head">
+        <span class="bullet">10</span>
+        <div>
+          <div class="name">Build Line</div>
+          <div class="sub">3D printing · fabrication · things made from scratch</div>
+        </div>
+      </div>
+      <ul>
+        <li><a class="stop" href="https://imgur.com/a/prusacaster-1zivHjb"><span class="dest">3D printing a Prusacaster guitar</span><span class="plat">Imgur →</span></a></li>
+        <li><a class="stop" href="https://imgur.com/gallery/OZoz3Vv"><span class="dest">3D-printed Ghostbusters proton pack</span><span class="plat">Imgur →</span></a></li>
+        <li><a class="stop" href="https://imgur.com/a/zd2xIRM"><span class="dest">Halloween costume build, 2023</span><span class="plat">Imgur →</span></a></li>
+        <li><a class="stop" href="https://imgur.com/yKiKCYS"><span class="dest">Scratch-built Kirby Halloween costume</span><span class="plat">Imgur →</span></a></li>
+        <li><a class="stop" href="https://imgur.com/gallery/N4ZTuMK"><span class="dest">Bowser costume from scratch</span><span class="plat">Imgur →</span></a></li>
+        <li><a class="stop" href="https://imgur.com/a/Z0wu6"><span class="dest">Raced a custom Power Wheels</span><span class="plat">Imgur →</span></a></li>
+        <li><a class="stop" href="https://imgur.com/a/PILpdR3"><span class="dest">Built a rock climbing wall in our garage</span><span class="plat">Imgur →</span></a></li>
+      </ul>
+    </div>
+
+    <div class="line l-arena">
+      <div class="line-head">
+        <span class="bullet">30</span>
+        <div>
+          <div class="name">Arena Line</div>
+          <div class="sub">Combat robotics · sparks may occur</div>
+        </div>
+      </div>
+      <ul>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334183103/"><span class="dest">Maker Faire Philly combat robots</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334180323/"><span class="dest">Rob's first combat robotics win</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334162220/"><span class="dest">Maryland trip for combat robotics</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://imgur.com/a/cD54HoA"><span class="dest">Competing in combat robotics</span><span class="plat">Imgur →</span></a></li>
+        <li><a class="stop" href="https://imgur.com/a/lCP9BBa"><span class="dest">Visiting National Havoc Robotics League</span><span class="plat">Imgur →</span></a></li>
+      </ul>
+    </div>
+
+    <div class="line l-encore">
+      <div class="line-head">
+        <span class="bullet">45</span>
+        <div>
+          <div class="name">Encore Line</div>
+          <div class="sub">Live music · ears ringing on the ride home</div>
+        </div>
+      </div>
+      <ul>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334182863"><span class="dest">Charlie Puth concert</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334171676/"><span class="dest">Good Kid concert</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334165340/"><span class="dest">AJR concert, Camden</span><span class="plat">Flickr →</span></a></li>
+      </ul>
+    </div>
+
+    <div class="line l-ride">
+      <div class="line-head">
+        <span class="bullet">57</span>
+        <div>
+          <div class="name">Ride Line</div>
+          <div class="sub">Bicycles · slowly, but with great enthusiasm</div>
+        </div>
+      </div>
+      <ul>
+        <li><a class="stop" href="https://www.strava.com/athletes/20908619"><span class="dest">Find me on Strava</span><span class="plat">Strava →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72157656399056341"><span class="dest">Built a bamboo bicycle</span><span class="plat">Flickr →</span></a></li>
+      </ul>
+    </div>
+
+    <div class="line l-field">
+      <div class="line-head">
+        <span class="bullet">18</span>
+        <div>
+          <div class="name">Field Trip Line</div>
+          <div class="sub">Family adventures · limited weekday service</div>
+        </div>
+      </div>
+      <ul>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334166367/"><span class="dest">Austin and San Antonio</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334170981/"><span class="dest">MotoGP, spring break</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334180533/"><span class="dest">Boston trip, summer 2025</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334183723/"><span class="dest">Camping trip</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720334165455/"><span class="dest">Louisville trip</span><span class="plat">Flickr →</span></a></li>
+        <li><a class="stop" href="https://www.flickr.com/photos/jabella/albums/72177720316049772/"><span class="dest">Spring break at the Grand Canyon</span><span class="plat">Flickr →</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap" id="telemetry">
+    <div class="bar"><h2>Station Monitors</h2><span class="note">Out of service · Repairs underway</span></div>
+    <div class="advisory" role="status">
+      <div class="stripe" aria-hidden="true"></div>
+      <div class="body">
+        <span class="label">Service Advisory</span>
+        <span class="msg">All station monitors are temporarily out of service for maintenance and track work. Normal telemetry service will resume soon. We apologize for the inconvenience.</span>
+      </div>
+    </div>
+    <div class="stations">
+      <div class="station closed">
+        <span class="id">STN-01 · ADS-B</span>
+        <h3>Aircraft Tracking</h3>
+        <p>Rooftop receiver feeding ADS-B Exchange. See what's overhead right now.</p>
+      </div>
+      <div class="station closed">
+        <span class="id">STN-02 · WX</span>
+        <h3>Weather Station</h3>
+        <p>Tempest sensor reporting local conditions, wind, and lightning strikes.</p>
+      </div>
+      <div class="station closed">
+        <span class="id">STN-03 · AQI</span>
+        <h3>Air Quality</h3>
+        <p>PurpleAir sensor measuring particulate levels in the neighborhood.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="connections">
+    <div class="bar"><h2>Connections</h2><span class="note">Transfers available at all hours</span></div>
+    <div class="connections">
+      <a class="cta alt" href="mailto:john@abella.net">Email Me</a>
+      <a class="cta" href="https://www.linkedin.com/in/johnabella/">LinkedIn</a>
+      <a class="cta" href="https://instagram.com/jabella75">Instagram</a>
+      <a class="cta" href="https://www.strava.com/athletes/20908619">Strava</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 John Abella · Hand-built, static, zero trackers</span>
+    <span>Schedule subject to change without notice</span>
+  </div>
+</footer>
+
+</body>
+</html>
