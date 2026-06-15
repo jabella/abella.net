@@ -274,6 +274,51 @@
 
   /* ---------- Telemetry ---------- */
   .stations{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px;}
+
+  /* ---------- Platform Cam (latest Instagram post) ---------- */
+  .cam{display:grid;grid-template-columns:300px 1fr;border:2px solid var(--ink);
+    background:var(--ink);overflow:hidden;margin-bottom:22px;}
+  .feed{position:relative;aspect-ratio:1/1;background:#000;overflow:hidden;}
+  .feed img{width:100%;height:100%;object-fit:cover;display:block;
+    filter:saturate(.82) contrast(1.07) brightness(.97);}
+  .feed::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+    background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.16) 2px 3px);}
+  .feed::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+    background:radial-gradient(ellipse at center,rgba(10,20,40,0) 52%,rgba(8,14,28,.55) 100%);}
+  .feed .nosignal{position:absolute;inset:0;z-index:1;display:flex;align-items:center;
+    justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;
+    letter-spacing:.2em;text-transform:uppercase;color:#3a4a63;}
+  .bracket{position:absolute;width:22px;height:22px;z-index:3;border:2px solid rgba(245,243,236,.85);}
+  .bracket.tl{top:9px;left:9px;border-right:none;border-bottom:none;}
+  .bracket.tr{top:9px;right:9px;border-left:none;border-bottom:none;}
+  .bracket.bl{bottom:9px;left:9px;border-right:none;border-top:none;}
+  .bracket.br{bottom:9px;right:9px;border-left:none;border-top:none;}
+  .osd{position:absolute;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+    letter-spacing:.08em;color:rgba(245,243,236,.92);text-shadow:0 1px 2px rgba(0,0,0,.8);}
+  .osd.tl{top:13px;left:38px;}
+  .osd.br{bottom:13px;right:13px;text-align:right;line-height:1.4;}
+  .osd .rec{color:var(--orange);font-weight:500;}
+  .cam-side{background:var(--paper-bright);display:flex;flex-direction:column;}
+  .cam-head{display:flex;align-items:center;gap:10px;padding:9px 14px;
+    background:var(--ink);color:var(--paper-bright);}
+  .cam-head .id{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:#B4BFCB;}
+  .cam-head .live{margin-left:auto;display:flex;align-items:center;gap:7px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--paper-bright);}
+  .cam-head .dot{width:9px;height:9px;border-radius:50%;background:var(--orange);}
+  @media (prefers-reduced-motion:no-preference){
+    .cam-head .dot{animation:camblink 1.4s steps(1) infinite;}
+    @keyframes camblink{0%,55%{opacity:1}56%,100%{opacity:.15}}
+  }
+  .cam-body{padding:15px 16px;flex:1;display:flex;flex-direction:column;}
+  .cam-body .cap{font-size:16.5px;color:var(--ink);}
+  .cam-body .meta{display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:16px;}
+  .cam-body .stamp{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--slate);}
+  .cam-body a{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+    color:var(--green);border-bottom:2px solid var(--orange);padding-bottom:1px;}
   .station{
     border:2px solid var(--ink);
     background:var(--paper-bright);
@@ -379,6 +424,7 @@
   @media (max-width:680px){
     .weekday{grid-template-columns:1fr;}
     .stations{grid-template-columns:1fr;}
+    .cam{grid-template-columns:1fr;}
     .bar .note{display:none;}
     .stop .plat{display:none;}
   }
@@ -522,12 +568,35 @@
   </section>
 
   <section class="wrap" id="telemetry">
-    <div class="bar"><h2>Station Monitors</h2><span class="note">Out of service · Repairs underway</span></div>
+    <div class="bar"><h2>Station Monitors</h2><span class="note">Cam-01 live · sensors under repair</span></div>
     <div class="advisory" role="status">
       <div class="stripe" aria-hidden="true"></div>
       <div class="body">
         <span class="label">Service Advisory</span>
-        <span class="msg">All station monitors are temporarily out of service for maintenance and track work. Normal telemetry service will resume soon. We apologize for the inconvenience.</span>
+        <span class="msg">Platform Cam 01 is back in service. The remaining telemetry sensors are still down for maintenance and track work — normal service will resume soon. We apologize for the inconvenience.</span>
+      </div>
+    </div>
+    <div class="cam">
+      <div class="feed">
+        <img src="latest-post.jpg" alt="Most recent Instagram post">
+        <span class="nosignal" aria-hidden="true">No Signal</span>
+        <span class="bracket tl"></span><span class="bracket tr"></span>
+        <span class="bracket bl"></span><span class="bracket br"></span>
+        <span class="osd tl"><span class="rec">● REC</span></span>
+        <span class="osd br">CAM-01 · @jabella75<br>2026-05-31</span>
+      </div>
+      <div class="cam-side">
+        <div class="cam-head">
+          <span class="id">Platform Cam · 01</span>
+          <span class="live"><span class="dot"></span>Live</span>
+        </div>
+        <div class="cam-body">
+          <p class="cap">[ add your caption here ]</p>
+          <div class="meta">
+            <span class="stamp">Captured · Jun 2026</span>
+            <a href="https://www.instagram.com/p/DZBf-1lldII/">View on Instagram →</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="stations">
