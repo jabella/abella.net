@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forbidden Record Stand — Service Bulletin — John Abella</title>
+<meta name="description" content="I couldn't buy the record stand I wanted, so I reverse-engineered it from album-cover math and had it CNC-cut. It fit the first try.">
+<meta name="theme-color" content="#1F3553">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Forbidden Record Stand">
+<meta property="og:description" content="I couldn't buy the record stand I wanted, so I reverse-engineered it from album-cover math and had it CNC-cut. It fit the first try.">
+<meta property="og:image" content="https://www.abella.net/posts/finished.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F4EC; --ink:#1C2420; --navy:#1F3553; --orange:#D5482F;
+    --blue:#2B5B8A; --red:#B0392C; --slate:#54584F; --rule:#C9C4B2;
+    --row:#EFEDDE; --paper-bright:#FBFAF4; --muted:#C7D3E2;
+    --line:#D5482F; /* Build Line */
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;
+    font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--orange);color:var(--paper-bright);}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;
+    gap:16px;flex-wrap:wrap;padding:20px 0 14px;}
+  .masthead a.back{font-family:'Barlow Condensed',sans-serif;font-weight:600;
+    font-size:15px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+    color:var(--ink);border-bottom:2px solid transparent;padding-bottom:1px;}
+  .masthead a.back:hover,.masthead a.back:focus-visible{border-bottom-color:var(--orange);}
+  .masthead .mark{font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+
+  .bulletin-head{border-top:4px solid var(--ink);padding-top:26px;margin-top:6px;}
+  .routeline{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+  .bullet{width:40px;height:40px;border-radius:9px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);
+    background:var(--line);color:var(--paper-bright);
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;}
+  .routeline .lname{font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1;}
+  .routeline .meta{margin-left:auto;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);
+    text-align:right;line-height:1.5;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:clamp(40px,7vw,62px);line-height:1.02;letter-spacing:.01em;text-transform:uppercase;}
+  .standfirst{font-size:21px;line-height:1.5;color:var(--slate);margin-top:16px;
+    max-width:38em;font-weight:500;}
+
+  .specs{border:2px solid var(--ink);background:var(--paper-bright);padding:18px 20px;margin:30px 0 8px;}
+  .specs h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;
+    letter-spacing:.14em;text-transform:uppercase;border-bottom:2px solid var(--ink);
+    padding-bottom:9px;margin-bottom:6px;}
+  .specs dl{display:grid;grid-template-columns:auto 1fr;gap:0;}
+  .specs dt,.specs dd{padding:8px 0;border-bottom:1px solid var(--rule);}
+  .specs dt{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--slate);padding-right:20px;white-space:nowrap;}
+  .specs dd{font-weight:500;}
+  .specs dl>*:nth-last-child(-n+2){border-bottom:none;}
+
+  .body{padding:30px 0 8px;}
+  .body p{margin:0 0 20px;}
+  .body h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:27px;
+    letter-spacing:.02em;text-transform:uppercase;margin:38px 0 14px;
+    padding-left:14px;border-left:5px solid var(--line);}
+  .body a{color:var(--navy);text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:1px;}
+  .body a:hover,.body a:focus-visible{background:var(--orange);color:var(--paper-bright);}
+  .body strong{font-weight:700;}
+  hr{border:none;border-top:2px solid var(--rule);margin:34px 0;}
+  blockquote{margin:30px 0;padding:6px 0 6px 22px;border-left:5px solid var(--orange);
+    font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:27px;
+    line-height:1.18;letter-spacing:.01em;color:var(--navy);}
+
+  figure{margin:26px 0;}
+  figure img{width:100%;display:block;border:2px solid var(--ink);}
+  .fig-portrait{max-width:480px;margin:26px auto;}
+  figcaption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;
+    color:var(--slate);margin-top:9px;padding-left:2px;}
+  figcaption::before{content:"\25B8 ";color:var(--orange);}
+
+  footer{margin-top:50px;border-top:4px solid var(--ink);background:var(--navy);color:var(--muted);}
+  footer .wrap{padding:22px 24px 26px;display:flex;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;align-items:center;}
+  footer a{color:var(--paper-bright);font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;
+    text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:1px;}
+  footer .fine{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;}
+  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px;}
+</style>
+</head>
+<body class="line-build">
+
+<header class="wrap masthead">
+  <a class="back" href="/">&larr; Back to schedule</a>
+  <span class="mark">Abella.net &middot; Service Bulletin</span>
+</header>
+
+<article>
+  <div class="wrap bulletin-head">
+    <div class="routeline">
+      <span class="bullet">10</span>
+      <span class="lname">Build Line</span>
+      <span class="meta">Bulletin &#8470; 001<br>Posted Jul 2026</span>
+    </div>
+    <h1>Forbidden Record Stand</h1>
+    <p class="standfirst">I want a record stand that I can&rsquo;t have &mdash; or, how I learned to pirate hardware.</p>
+
+    <aside class="specs">
+      <h2>Specifications</h2>
+      <dl>
+        <dt>Build time</dt><dd>6 hours over a few weekends</dd>
+        <dt>Materials</dt><dd>3/4&Prime; birch plywood</dd>
+        <dt>Tools</dt><dd>Fusion 360, outsourced CNC</dd>
+        <dt>Cost</dt><dd>$420</dd>
+        <dt>Status</dt><dd>Done</dd>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="wrap body">
+    <p>An absolutely perfect record stand that fits in my space is only sold in New Zealand. You can&rsquo;t get it in America. I needed it.</p>
+
+    <p>It looked easy enough, but I want it exact. I didn&rsquo;t want some squared off, basic-looking thing. I want <em>this</em> shelf.</p>
+
+    <figure class="fig-portrait">
+      <img src="forbidden-record-stand/reference-nz.jpg" alt="The original record stand, sold only in New Zealand">
+      <figcaption>The original &mdash; sold only in New Zealand, and never here. This is the shelf I wanted.</figcaption>
+    </figure>
+
+    <h2>The first problem</h2>
+    <p>If I&rsquo;m going to build my own, I have to come up with dimensions and drawings for it. The trouble is I don&rsquo;t know how to do any of that in modern CAD software.</p>
+
+    <blockquote>Learning to use the tools to make the thing you want is half the fun, right?</blockquote>
+
+    <p>Thankfully the vendor posted some rough dimensions, and we know how large an album cover is and can make some inferences between that and the thickness of the wood. I fired up Fusion and spent my lunch hour watching tutorials and fumbling for days.</p>
+
+    <figure>
+      <img src="forbidden-record-stand/fusion-drawing.png" alt="Fully dimensioned Fusion 360 sketch of the side panel">
+      <figcaption>The side panel, fully dimensioned. Those 18.30&nbsp;mm marks are the plywood thickness &mdash; backed out from the one measurement I could trust: the width of a 12-inch album jacket.</figcaption>
+    </figure>
+
+    <figure class="fig-portrait">
+      <img src="forbidden-record-stand/solid-model.jpg" alt="3D solid model of the record stand in Fusion 360">
+      <figcaption>Flat sketch to solid model. The exposed ply edges aren&rsquo;t a compromise &mdash; they&rsquo;re the whole look.</figcaption>
+    </figure>
+
+    <h2>Off to be cut</h2>
+    <p>With the model done, I exported the panels as DXF, nested them onto a single sheet, and sent them off to a shop to cut. Then came the hard part: waiting.</p>
+
+    <figure>
+      <img src="forbidden-record-stand/cut-layout.png" alt="DXF cut file with all panels nested onto one plywood sheet">
+      <figcaption>Every panel nested onto a single sheet, ready for the CNC. Off to the shop.</figcaption>
+    </figure>
+
+    <h2>It fit the first try</h2>
+    <p>Considering how little information I had to go on, it all came out great. I changed the design in a few ways to fit my space better &mdash; a record flip bin on the left, turntable on the right &mdash; and despite it being my first ever CAD work for something like this, it all fit the first try.</p>
+
+    <figure class="fig-portrait">
+      <img src="forbidden-record-stand/finished.jpg" alt="The finished record stand in John's home, loaded with records">
+      <figcaption>Home at last. Flip bin on the left, turntable on the right &mdash; sized for the one corner it had to fit.</figcaption>
+    </figure>
+
+    <p>Turns out the surest way to get the thing you can&rsquo;t have is to learn how to make it &mdash; and mine fits better anyway.</p>
+
+    <hr>
+    <p><strong>More on this line:</strong> <a href="/#weekend">back to the full schedule</a>.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <a href="/">&larr; Abella.net &middot; Full schedule</a>
+    <span class="fine">Hand-built, static, zero trackers</span>
+  </div>
+</footer>
+
+</body>
+</html>
