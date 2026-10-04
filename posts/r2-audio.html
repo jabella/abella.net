@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivian R2 EQ Settings, Measured: What the Audio Sliders Actually Do | John Abella</title>
+<meta name="description" content="Rivian R2 audio and EQ settings measured with REW and a calibrated mic: the stock bass-heavy response, what each EQ slider does, two settings to try, and the R2's hidden loudness compensation.">
+<link rel="canonical" href="https://www.abella.net/posts/r2-audio.html">
+<meta name="theme-color" content="#1F3553">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rivian R2 EQ Settings, Measured">
+<meta property="og:description" content="What the Rivian R2's audio system and EQ sliders actually do, measured with a calibrated mic, plus EQ settings to try.">
+<meta property="og:image" content="https://www.abella.net/posts/r2-audio/stock-response.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F4EC; --ink:#1C2420; --navy:#1F3553; --orange:#D5482F;
+    --blue:#2B5B8A; --red:#B0392C; --slate:#54584F; --rule:#C9C4B2;
+    --row:#EFEDDE; --paper-bright:#FBFAF4; --muted:#C7D3E2;
+  }
+  .line-build{--line:#D5482F;}
+  .line-arena{--line:#B0392C;}
+  .line-encore{--line:#6E4B86;}
+  .line-ride{--line:#2E6B4F;}
+  .line-field{--line:#2B5B8A;}
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;
+    font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--orange);color:var(--paper-bright);}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;
+    gap:16px;flex-wrap:wrap;padding:20px 0 14px;}
+  .masthead a.back{font-family:'Barlow Condensed',sans-serif;font-weight:600;
+    font-size:15px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+    color:var(--ink);border-bottom:2px solid transparent;padding-bottom:1px;}
+  .masthead a.back:hover,.masthead a.back:focus-visible{border-bottom-color:var(--orange);}
+  .masthead .mark{font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
+
+  .bulletin-head{border-top:4px solid var(--ink);padding-top:26px;margin-top:6px;}
+  .routeline{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+  .bullet{width:40px;height:40px;border-radius:9px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);
+    background:var(--line);color:var(--paper-bright);
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;}
+  .routeline .lname{font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:16px;letter-spacing:.14em;text-transform:uppercase;line-height:1;}
+  .routeline .meta{margin-left:auto;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);
+    text-align:right;line-height:1.5;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:clamp(40px,7vw,62px);line-height:1.02;letter-spacing:.01em;text-transform:uppercase;}
+  .standfirst{font-size:21px;line-height:1.5;color:var(--slate);margin-top:16px;
+    max-width:38em;font-weight:500;}
+
+  .specs{border:2px solid var(--ink);background:var(--paper-bright);padding:18px 20px;margin:30px 0 8px;}
+  .specs h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;
+    letter-spacing:.14em;text-transform:uppercase;border-bottom:2px solid var(--ink);
+    padding-bottom:9px;margin-bottom:6px;}
+  .specs dl{display:grid;grid-template-columns:auto 1fr;gap:0;}
+  .specs dt,.specs dd{padding:8px 0;border-bottom:1px solid var(--rule);}
+  .specs dt{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--slate);padding-right:20px;white-space:nowrap;}
+  .specs dd{font-weight:500;}
+  .specs dl>*:nth-last-child(-n+2){border-bottom:none;}
+
+  .body{padding:30px 0 8px;}
+  .body p{margin:0 0 20px;}
+  .body h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:27px;
+    letter-spacing:.02em;text-transform:uppercase;margin:38px 0 14px;
+    padding-left:14px;border-left:5px solid var(--line);}
+  .body a{color:var(--navy);text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:1px;}
+  .body a:hover,.body a:focus-visible{background:var(--orange);color:var(--paper-bright);}
+  .body strong{font-weight:700;}
+  .body code{font-family:'IBM Plex Mono',monospace;font-size:.84em;background:var(--row);
+    padding:1px 5px;border:1px solid var(--rule);}
+  hr{border:none;border-top:2px solid var(--rule);margin:34px 0;}
+  blockquote{margin:30px 0;padding:6px 0 6px 22px;border-left:5px solid var(--line);
+    font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:27px;
+    line-height:1.18;letter-spacing:.01em;color:var(--navy);}
+
+  figure{margin:26px 0;}
+  figure img{width:100%;display:block;border:2px solid var(--ink);}
+  .fig-portrait{max-width:480px;margin:26px auto;}
+  figcaption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;
+    color:var(--slate);margin-top:9px;padding-left:2px;}
+  figcaption::before{content:"\25B8 ";color:var(--line);}
+
+
+  .placard{aspect-ratio:16/10;border:2px dashed var(--ink);display:flex;align-items:center;
+    justify-content:center;text-align:center;padding:18px;color:var(--slate);
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    background:repeating-linear-gradient(135deg,var(--row) 0 12px,var(--paper-bright) 12px 24px);}
+  .fig-portrait .placard{aspect-ratio:4/5;}
+
+  /* EQ fader boards: the real slider positions, drawn from -10 to +10 */
+  .board{border:2px solid var(--ink);background:var(--paper-bright);margin:26px 0;}
+  .board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+    padding:12px 16px;border-bottom:2px solid var(--ink);}
+  .board-head h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;
+    letter-spacing:.08em;text-transform:uppercase;}
+  .board-head span{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--slate);}
+  .faders{display:grid;grid-template-columns:repeat(9,1fr);padding:16px 8px 12px;gap:2px;}
+  .fader{display:flex;flex-direction:column;align-items:center;}
+  .track{position:relative;width:10px;height:132px;background:var(--row);border:1px solid var(--rule);}
+  .track::after{content:"";position:absolute;left:-7px;right:-7px;top:50%;border-top:2px solid var(--ink);}
+  .fill{position:absolute;left:0;right:0;background:var(--line);}
+  .fill.up{bottom:50%;height:calc(var(--v) * 5%);}
+  .fill.down{top:50%;height:calc(var(--v) * 5%);}
+  .knob{position:absolute;left:-9px;right:-9px;height:9px;background:var(--ink);border-radius:2px;
+    transform:translateY(-50%);}
+  .val{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;margin-top:10px;}
+  .band{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;color:var(--slate);}
+  .board-foot{padding:10px 16px;border-top:1px solid var(--rule);font-size:15px;color:var(--slate);}
+
+  /* Timetable-style data table */
+  .table-wrap{overflow-x:auto;margin:26px 0;border:2px solid var(--ink);background:var(--paper-bright);}
+  table{border-collapse:collapse;width:100%;min-width:420px;}
+  th{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--slate);font-weight:500;text-align:left;padding:10px 16px;border-bottom:2px solid var(--ink);}
+  td{padding:9px 16px;border-bottom:1px solid var(--rule);font-weight:500;}
+  tbody tr:nth-child(odd){background:var(--row);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.num,th.num{text-align:right;font-family:'IBM Plex Mono',monospace;}
+
+  footer{margin-top:50px;border-top:4px solid var(--ink);background:var(--navy);color:var(--muted);}
+  footer .wrap{padding:22px 24px 26px;display:flex;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;align-items:center;}
+  footer a{color:var(--paper-bright);font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;
+    text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:1px;}
+  footer .fine{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;}
+  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px;}
+  @media (max-width:560px){
+    .routeline .meta{margin-left:0;text-align:left;width:100%;}
+    .track{height:110px;}
+    .val{font-size:11px;}
+    .band{font-size:12.5px;}
+  }
+</style>
+</head>
+
+<body class="line-encore">
+
+<header class="wrap masthead">
+  <a class="back" href="/">&larr; Back to schedule</a>
+  <span class="mark">Abella.net &middot; Service Bulletin</span>
+</header>
+
+<article>
+  <div class="wrap bulletin-head">
+    <div class="routeline">
+      <span class="bullet">45</span>
+      <span class="lname">Encore Line</span>
+      <span class="meta">Bulletin &#8470; 002<br>Posted Oct 2026</span>
+    </div>
+    <h1>Rivian R2 Audio, Measured</h1>
+    <p class="standfirst">Nobody knew how the Rivian R2&rsquo;s audio system measures yet, or what EQ settings actually help, so I put a calibrated mic where my head goes and found out.</p>
+
+    <aside class="specs">
+      <h2>Specifications</h2>
+      <dl>
+        <dt>Vehicle</dt><dd>Rivian R2, parked</dd>
+        <dt>Mic</dt><dd>miniDSP UMIK-1, pointed at the roof (90&deg; calibration)</dd>
+        <dt>Software</dt><dd>Room EQ Wizard (REW)</dd>
+        <dt>Source</dt><dd>Log sweeps from a laptop over Bluetooth</dd>
+        <dt>Method</dt><dd>5 handheld sweeps around the driver&rsquo;s head, RMS-averaged, 1/3-octave smoothing</dd>
+        <dt>Status</dt><dd>Ongoing &mdash; driving test next</dd>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="wrap body">
+    <p>The R2 is new enough that there&rsquo;s almost nothing out there about how its audio system actually measures, or what the EQ sliders really do. I had a calibrated mic, a laptop, and a new car to explore, so I spent a few sessions parked with the doors shut, finding out.</p>
+
+    <p>The results went up on Reddit as two posts. This is the whole thing in one place.</p>
+
+    <h2>The setup</h2>
+    <p>I held the mic at driver&rsquo;s head height, pointed at the roof. REW generates a sweep, the laptop plays it to the car over Bluetooth, and the mic records what comes out. Doors closed, HVAC off, Dynamic Sound Adjust off, and the volume fixed at a loud-but-normal level, about 83&nbsp;dB at the mic.</p>
+
+    <p>One spot in a car will lie to you. The cabin is small, reflective and lopsided, and moving the mic a few inches swings the 200&ndash;600&nbsp;Hz range all over the place. So unless noted otherwise, every measurement here is five sweeps, moving the mic a few inches around where my head goes between each one, then averaged together.</p>
+
+    <p>Bluetooth is fine for this. It scrambles timing and phase, but the frequency response (how loud each pitch is) comes through intact. It does roll off the very top, around 15&ndash;18&nbsp;kHz, so ignore the far right edge of every graph.</p>
+
+    <h2>Stock, it&rsquo;s all bass</h2>
+
+    <figure>
+      <img src="r2-audio/stock-response.jpg" alt="REW graph of the R2's stock frequency response with flat EQ, peaking near 102 dB at 40 Hz and settling around 80–83 dB above 700 Hz">
+      <figcaption>All sliders at zero. Average of 5 mic positions, 1/3-octave smoothing.</figcaption>
+    </figure>
+
+    <p>With every slider at zero there&rsquo;s a big hump centered around 40&ndash;50&nbsp;Hz, about <strong>20&nbsp;dB above</strong> the level at 1&nbsp;kHz, and it slopes down steadily through the upper bass. It&rsquo;s still about +10&nbsp;dB at 100&nbsp;Hz. Some bass lift is normal and nice in a car, and a common target is around 8&ndash;12&nbsp;dB. This is on the generous side, and it&rsquo;s why the car can sound boomy out of the box.</p>
+
+    <p>Above about 700&nbsp;Hz it&rsquo;s impressively even, within about &plusmn;2&nbsp;dB, with a mild dip around 2&ndash;3&nbsp;kHz and a slight lift around 8&ndash;12&nbsp;kHz.</p>
+
+    <p>Where does the hump come from? Mostly cabin gain: a small sealed space naturally boosts low bass, often by 10&nbsp;dB or more. Add a tuning that leans bass-heavy, which survives road noise and sounds impressive in a showroom, and you get this.</p>
+
+    <h2>What the R2&rsquo;s EQ sliders actually do</h2>
+    <p>The R2 has a nine-band EQ, one band per octave from 63&nbsp;Hz to 16&nbsp;kHz, and each slider moves ten steps up or down. The screen doesn&rsquo;t say what a step is worth, so I pushed each slider to max one at a time, measured it, and divided the result by the flat baseline using REW&rsquo;s Trace Arithmetic. What&rsquo;s left is exactly what that one slider does.</p>
+
+    <figure>
+      <img src="r2-audio/eq-sliders.jpg" alt="Nine overlaid REW curves, one per R2 EQ slider at maximum, each peaking around 5 dB at its own band">
+      <figcaption>Each slider at +10, divided by the flat baseline. Each peak sits on its band. The small bump at 500&ndash;800&nbsp;Hz and the dips near 2.5 and 3.5&nbsp;kHz show up in every curve, so they&rsquo;re measurement noise, not the sliders.</figcaption>
+    </figure>
+
+    <blockquote>Ten steps on the screen is about five decibels in the cabin.</blockquote>
+
+    <p>Most bands top out around <strong>+5&nbsp;dB</strong>, so one step is roughly half a decibel. The 500&nbsp;Hz slider runs a little hotter, at about +6.5. The 63&nbsp;Hz slider is a low shelf (about +6 at the very bottom), 125&nbsp;Hz through 8&nbsp;kHz are peaks about 0.8 octaves wide centered on their labels, and 16&nbsp;kHz is a rising shelf that&rsquo;s still climbing at 20&nbsp;kHz. Cuts appear to mirror boosts: setting 63 and 125 to &minus;10 took about 5&nbsp;dB off the bass.</p>
+
+    <p>Two practical takeaways. One or two steps is barely audible, so don&rsquo;t be shy &mdash; it takes four to ten steps to hear a real change. And at max cut the EQ only takes about 5&nbsp;dB off a 20&nbsp;dB hump. You can soften the boom, but not erase it. I tried working out a truly flat setting and gave up; a &plusmn;5&nbsp;dB EQ against a +20&nbsp;dB hump isn&rsquo;t a fight you win, and flat tends to sound thin in a car anyway.</p>
+
+    <h2>Rivian R2 EQ settings to try</h2>
+    <p><strong>Balanced</strong> aims for bass about 8&ndash;10&nbsp;dB above the mids instead of flat. It cuts the low end as far as it goes and adds a small lift at 2&ndash;4&nbsp;kHz to fill the vocal sag.</p>
+
+    <div class="board" role="img" aria-label="Balanced EQ preset: 63 Hz −10, 125 Hz −10, 250 Hz −8, 500 Hz 0, 1 kHz 0, 2 kHz +4, 4 kHz +2, 8 kHz 0, 16 kHz 0">
+      <div class="board-head"><h3>Balanced</h3><span>Steps, &minus;10 to +10</span></div>
+      <div class="faders" data-values="-10,-10,-8,0,0,4,2,0,0"></div>
+    </div>
+
+    <figure>
+      <img src="r2-audio/balanced-vs-flat.jpg" alt="REW graph comparing the flat baseline with the Balanced EQ, showing about 5 dB less bass and nearly identical curves above 400 Hz">
+      <figcaption>Flat vs. Balanced, same afternoon session and volume.</figcaption>
+    </figure>
+
+    <p>It does what it can. About 5&nbsp;dB comes off at 40&nbsp;Hz, about 4.5 at 100&nbsp;Hz, and about 3 around 250&ndash;300&nbsp;Hz. That gets the upper bass into the target range, around +8&nbsp;dB at 100&nbsp;Hz, but the deep bass still sits about 18&nbsp;dB above 1&nbsp;kHz. Above 400&nbsp;Hz the two curves are nearly identical; the 2k and 4k boosts only show up as half a decibel or so. They&rsquo;re a matter of taste more than measurement.</p>
+
+    <p><strong>Harman-ish</strong> came from a commenter asking about the Harman curve, a target from Harman&rsquo;s listener-preference research: a bass shelf of about +6 to +10&nbsp;dB, flat mids, and a gentle downward tilt in the treble. Balanced already matched the mids, so this version pulls 250&nbsp;Hz down a touch more, takes 4&nbsp;kHz back to zero, and cuts 8 and 16&nbsp;kHz to create the treble slope.</p>
+
+    <div class="board" role="img" aria-label="Harman-ish EQ preset: 63 Hz −10, 125 Hz −10, 250 Hz −10, 500 Hz 0, 1 kHz 0, 2 kHz +4, 4 kHz 0, 8 kHz −6, 16 kHz −4">
+      <div class="board-head"><h3>Harman-ish</h3><span>Steps, &minus;10 to +10</span></div>
+      <div class="faders" data-values="-10,-10,-10,0,0,4,0,-6,-4"></div>
+      <p class="board-foot">The deep bass still lands about 8&nbsp;dB above the Harman target, because the EQ runs out of range down there. Mids and treble get close; the bass gets as close as the R2 allows.</p>
+    </div>
+
+    <h2>The car moves the bass with the volume</h2>
+    <p>My morning and afternoon sessions didn&rsquo;t match. The afternoon run was about 6&nbsp;dB quieter, and it had a few dB more bass relative to the mids. Rather than blame mic placement, I ran it properly: the mic on a tripod in one fixed spot on the center console, flat EQ, DSA off, and sweeps at four volume levels, all aligned at 500&nbsp;Hz&ndash;2&nbsp;kHz so only the shape could differ.</p>
+
+    <figure class="fig-portrait">
+      <img src="r2-audio/mic-setup.jpg" alt="UMIK-1 measurement mic on a tripod on the R2's center console, with the miniDSP box on the passenger seat and the R2's EQ screen in the background showing all sliders flat">
+      <figcaption>The fixed spot for the volume tests. On screen: the R2&rsquo;s nine-band EQ, every slider flat.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="r2-audio/loudness-volumes.jpg" alt="Four REW curves at car volumes 4, 7, 12 and 17; the bass fans out with more bass at lower volume while the midrange curves overlap">
+      <figcaption>Flat EQ, DSA off, fixed mic. Lightest is quietest; legend values are the level at 40&nbsp;Hz. This is a single mic position, not a five-spot average, so the dips below 1&nbsp;kHz look deeper than in the other graphs.</figcaption>
+    </figure>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Car volume</th><th class="num">Level at 40 Hz</th><th class="num">Extra bass vs. vol. 17</th></tr></thead>
+        <tbody>
+          <tr><td>4 (quiet)</td><td class="num">99.7 dB</td><td class="num">+7 dB</td></tr>
+          <tr><td>7</td><td class="num">98.1 dB</td><td class="num">+5.5 dB</td></tr>
+          <tr><td>12</td><td class="num">96.0 dB</td><td class="num">+3.5 dB</td></tr>
+          <tr><td>17 (loud)</td><td class="num">92.5 dB</td><td class="num">&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The quieter you listen, the more bass the car adds. It&rsquo;s strongest in the deep bass, tapers through the upper bass, and is gone by about 500&nbsp;Hz. The midrange stacks perfectly at every volume. The top end does a little of the same: at volume 17, the treble above 8&nbsp;kHz is about 3&nbsp;dB lower than at the quieter settings.</p>
+
+    <p>A skeptical commenter suggested the speakers were just compressing at high volume. So I checked the absolute levels instead of the aligned ones. From volume 4 to 17 the midrange rises about 25&nbsp;dB, but the bass at 40&nbsp;Hz only rises about 18. That shortfall is steady from the very quietest steps, where the mids are only around 60&nbsp;dB &mdash; a level where speakers are completely linear. It isn&rsquo;t the drivers. It&rsquo;s the car&rsquo;s DSP, on purpose. (Side note: each volume step works out to roughly 2&nbsp;dB.)</p>
+
+    <p>This is loudness compensation. Your ears lose sensitivity to bass faster than to midrange as volume drops &mdash; that&rsquo;s why music sounds thin when you turn it down &mdash; so the car adds bass back. I couldn&rsquo;t find a setting that turns it off.</p>
+
+    <h2>Dynamic Sound Adjust does nothing parked</h2>
+    <p>At every volume, DSA off, low and high measured within about half a decibel of each other. That&rsquo;s measurement noise. It held with my custom EQ too. So DSA isn&rsquo;t the loudness compensation; it&rsquo;s almost certainly based on speed or road noise, and adjusts the sound as you drive.</p>
+
+    <h2>What it means if you own one</h2>
+    <p><strong>Tune the EQ at the volume you usually listen at.</strong> That&rsquo;s the only volume where it&rsquo;ll sound the way you set it. An EQ dialed in quietly will sound leaner when you crank it on the highway, and the other way around.</p>
+    <p><strong>If it sounds boomy, cut 63 and 125</strong> rather than boosting everything else, and move the sliders in big steps. And keep the caveats in mind: this is one car, measured parked, with one mic. Road noise changes what sounds right, and at highway speed a little extra bass usually earns its keep.</p>
+
+    <h2>If you want to try this yourself</h2>
+    <p>A few REW lessons I learned the hard way. When dividing one sweep by another in Trace Arithmetic, use <code>|A| / |B|</code>, not <code>A / B</code>; Bluetooth timing makes the phase meaningless, and complex division turns it into garbage. Leave <strong>Max gain</strong> unchecked, because it silently flattened a real +5&nbsp;dB shelf on me. Smooth the source measurements <em>before</em> doing the arithmetic, not after. To compare sessions at different volumes, use Align SPL centered on 1&nbsp;kHz with a two-octave span. And don&rsquo;t accidentally average your new sweeps together with the old ones, which made one of my EQ changes look like it did nothing at all.</p>
+
+    <h2>Next stop</h2>
+    <p>Everything here was measured parked. Next is a driving test, with a passenger running the laptop, to find out what Dynamic Sound Adjust actually does and how loud the cabin gets at highway speed. The other seats are on the list too.</p>
+
+    <hr>
+    <p><strong>The original threads:</strong> <a href="[REDDIT-POST-1-URL]">what the sliders actually do</a> and <a href="[REDDIT-POST-2-URL]">the loudness compensation follow-up</a>. Happy to share the REW files with anyone who wants to dig in.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <a href="/">&larr; Abella.net &middot; Full schedule</a>
+    <span class="fine">Hand-built, static, zero trackers</span>
+  </div>
+</footer>
+
+<script>
+  /* Draws each fader board from its data-values list (-10..+10 steps) */
+  (function(){
+    var bands=['63','125','250','500','1k','2k','4k','8k','16k'];
+    document.querySelectorAll('.faders').forEach(function(el){
+      var vals=el.getAttribute('data-values').split(',').map(Number);
+      el.innerHTML=vals.map(function(v,i){
+        var dir=v>=0?'up':'down', mag=Math.abs(v);
+        var knobTop=50-(v*5);
+        var label=v>0?'+'+v:(v<0?'\u2212'+mag:'0');
+        return '<div class="fader" aria-hidden="true"><div class="track">'+
+          (mag?'<div class="fill '+dir+'" style="--v:'+mag+'"></div>':'')+
+          '<div class="knob" style="top:'+knobTop+'%"></div></div>'+
+          '<span class="val">'+label+'</span><span class="band">'+bands[i]+'</span></div>';
+      }).join('');
+    });
+  })();
+</script>
+
+</body>
+</html>
